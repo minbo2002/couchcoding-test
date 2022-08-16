@@ -1,14 +1,15 @@
 package com.example.sample.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
-@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category {
 
     @Id
@@ -18,9 +19,9 @@ public class Category {
     @Column(length = 100, unique = true)
     private String name;
 
-    public Category() {
-
-    }
+    @JsonIgnore // 원래는 DTO에서 사용해야한다.
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    private List<Memo> memos = new ArrayList<>();
 
     @Builder
     public Category(String name) {

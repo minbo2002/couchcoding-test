@@ -35,13 +35,14 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Category getCategoryById(Long id) {
 
         return categoryRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "카테고리가 존재하지 않습니다."));
     }
 
+    @Transactional(readOnly = true)
     public Page<Category> getCategories(Pageable pageable, String keyword) {
 
         if(keyword == null) {
