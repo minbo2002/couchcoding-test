@@ -1,6 +1,9 @@
 package com.example.sample.domain;
 
+import com.example.sample.controller.dto.memo.MemoDTO;
 import lombok.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.*;
 
@@ -30,8 +33,7 @@ public class Memo {
         this.content = content;
     }
 
-    public void updateMemo(Category category, String name, String content) {
-        this.category = category;
+    public void updateMemo(String name, String content) {
         this.name = name;
         this.content = content;
     }

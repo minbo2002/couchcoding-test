@@ -1,6 +1,6 @@
 package com.example.sample.controller;
 
-import com.example.sample.controller.dto.CategoryDTO;
+import com.example.sample.controller.dto.category.CategoryDTO;
 import com.example.sample.domain.Category;
 import com.example.sample.service.CategoryService;
 import lombok.RequiredArgsConstructor;
